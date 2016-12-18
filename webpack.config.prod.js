@@ -27,7 +27,10 @@ module.exports = {
          * See description in 'webpack.config.dev' for more info.
          */
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
+            'process.env': {
+                NODE_ENV: JSON.stringify('production'),
+                API_HOST: JSON.stringify('http://localhost:3001')
+            }
         }),
         /**
          * Some of you might recognize this! It minimizes all your JS output of chunks.
