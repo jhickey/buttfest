@@ -29,7 +29,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production'),
-                API_HOST: JSON.stringify('http://localhost:3001')
+                API_HOST: JSON.stringify('https://buttfest-server.herokuapp.com')
             }
         }),
         /**
