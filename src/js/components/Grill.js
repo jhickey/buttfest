@@ -10,11 +10,13 @@ export default class Grill extends Component {
   };
 
   getColor(temp) {
-    /*eslint-disable*/
-    const t = -30 + (60 * temp/(350));
+    const t = -30 + (60 * temp / (350));
     // Map the temperature to a 0-1 range
     let a = (t + 30) / 60;
+
+    /*eslint-disable*/
     a = (a < 0) ? 0 : ((a > 1) ? 1 : a);
+    /*eslint-enable*/
 
     // Scrunch the green/cyan range in the middle
     const sign = (a < 0.5) ? -1 : 1;
@@ -25,7 +27,6 @@ export default class Grill extends Component {
     const h1 = 12;
     const h = (h0) * (1 - a) + (h1) * (a);
     return 'hsl(' + [h, '75%', '50%'] + ')';
-    /*eslint-enable*/
   }
 
   renderSVG() {

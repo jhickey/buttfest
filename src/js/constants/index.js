@@ -1,5 +1,7 @@
 export const datadogGraphs = {
-  LAST_HOUR: 'd607edc351227cf081c1f560fade86936c6912ddeff8c3f51b9b81ed1c50c47d'
+  LAST_HOUR: '58f88bbb0e11a1750d6adcbd34c6bd555ea67b7be56fee633184d0231cc3198c',
+  LAST_4_HOURS: 'fa0a6cadf24f54a12e17f73ec6c0092547aeb38d0af242d3e9979d63d0e582cc',
+  LAST_DAY: '21c0404d62b6d6ea7f201c72c05e3864b76a433e9a3b06291ea45ef4bf7563fe'
 };
 
 export const asyncSuffixes = ['LOADING', 'SUCCESS', 'FAILURE'];

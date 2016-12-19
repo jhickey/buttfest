@@ -4,8 +4,7 @@ import {connect} from 'react-redux';
 
 import Header from '../components/Header';
 import Grill from '../components/Grill';
-import DataDogGraphEmbed from '../components/DataDogGraphEmbed';
-import {datadogGraphs} from '../constants';
+import Graph from '../components/Graph';
 
 
 @connect(state => ({
@@ -28,17 +27,15 @@ export default class App extends Component {
         <Header/>
         <Grid>
           <Row>
-            <Col lg={6} md={6} sm={12}>
+            <Col lg={5} md={5} sm={12}>
               <Grill
                 temperature={temperature}
                 connected={connected}
                 lastUpdate={lastUpdate}
               />
             </Col>
-            <Col lg={6} md={6} sm={12}>
-              <DataDogGraphEmbed
-                graph={datadogGraphs.LAST_HOUR}
-              />
+            <Col lg={7} md={7} sm={12}>
+              <Graph/>
             </Col>
           </Row>
         </Grid>
