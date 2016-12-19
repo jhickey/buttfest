@@ -13,19 +13,19 @@ import socketMiddleware from '../middleware/socketMiddleware';
 const logger = createLogger();
 
 const finalCreateStore = compose(
-    applyMiddleware(asyncMiddleware(), socketMiddleware('temperature'), logger),
-    DevTools.instrument()
+  applyMiddleware(asyncMiddleware(), socketMiddleware('temperature'), logger),
+  DevTools.instrument()
 )(createStore);
 
 module.exports = function configureStore(initialState) {
-    const store = finalCreateStore(rootReducer, initialState);
+  const store = finalCreateStore(rootReducer, initialState);
 
-    // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
-    if (module.hot) {
-        module.hot.accept('../ducks', () =>
-            store.replaceReducer(require('../ducks'))
-        );
-    }
+  // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
+  if (module.hot) {
+    module.hot.accept('../ducks', () =>
+      store.replaceReducer(require('../ducks'))
+    );
+  }
 
-    return store;
+  return store;
 };

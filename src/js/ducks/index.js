@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import temperatureMonitor from './temperatureMonitor';
 
 const rootReducer = combineReducers({
-    temperatureMonitor
+  temperatureMonitor
 });
 
 export default rootReducer;
