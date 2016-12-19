@@ -1,6 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const yml = require('node-yaml');
+
+const NODE_ENV = 'production';
+const config = yml.readSync('config.yml');
+const ENV = config[NODE_ENV];
 
 module.exports = {
     devtool: 'source-map',
@@ -28,8 +33,8 @@ module.exports = {
          */
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: JSON.stringify('production'),
-                API_HOST: JSON.stringify('https://buttfest-server.herokuapp.com')
+                NODE_ENV: JSON.stringify(NODE_ENV),
+                API_HOST: JSON.stringify(ENV.apiHost)
             }
         }),
         /**

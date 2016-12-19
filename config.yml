@@ -1,0 +1,5 @@
+development:
+  apiHost: 'http://localhost:3001'
+
+production:
+  apiHost: 'https://buttfest-server.herokuapp.com'

@@ -1,9 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from '../reducers';
-import thunk from 'redux-thunk';
+import rootReducer from '../ducks';
+import asyncMiddleware from '../middleware/asyncMiddleware';
+import socketMiddleware from '../middleware/socketMiddleware';
 
 const finalCreateStore = compose(
-  applyMiddleware(thunk)
+    applyMiddleware(asyncMiddleware(), socketMiddleware('temperature'), logger)
 )(createStore);
 
 module.exports = function configureStore(initialState) {
