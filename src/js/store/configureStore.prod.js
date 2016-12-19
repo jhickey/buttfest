@@ -4,7 +4,7 @@ import asyncMiddleware from '../middleware/asyncMiddleware';
 import socketMiddleware from '../middleware/socketMiddleware';
 
 const finalCreateStore = compose(
-    applyMiddleware(asyncMiddleware(), socketMiddleware('temperature'), logger)
+    applyMiddleware(asyncMiddleware(), socketMiddleware('temperature'))
 )(createStore);
 
 module.exports = function configureStore(initialState) {
