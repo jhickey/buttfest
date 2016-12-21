@@ -7,7 +7,7 @@
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "dev": "NODE_ENV=development npm start",
-    "start": "node devServer.js",
+    "start": "webpack-dashboard -- node devServer.js",
     "lint": "eslint src"
   },
   "repository": {
@@ -49,6 +49,7 @@
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.12",
+    "webpack-dashboard": "^0.2.0",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0"
   },
