@@ -15,7 +15,6 @@ const TemperatureMonitorRecord = Record({
 
 export default class TemperatureMonitor extends TemperatureMonitorRecord {
   setTemperature(temperature, type = 'ambient') {
-    console.log('***', temperature, type);
     return this
       .setIn(['temperatures', type], temperature)
       .set('lastUpdate', new Date());

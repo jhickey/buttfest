@@ -1,39 +1,19 @@
 import  React, {Component, PropTypes} from 'react';
-import {Panel} from 'react-bootstrap';
+import MonitorGraphic from './MonitorGraphic';
 
+@MonitorGraphic
 export default class Grill extends Component {
 
   static propTypes = {
     temperature: PropTypes.number,
-    connected: PropTypes.bool,
-    lastUpdate: PropTypes.instanceOf(Date)
+    color: PropTypes.string,
+    connected: PropTypes.bool
   };
 
-  getColor(temp) {
-    const t = -30 + (60 * temp / (350));
-    // Map the temperature to a 0-1 range
-    let a = (t + 30) / 60;
-
-    /*eslint-disable*/
-    a = (a < 0) ? 0 : ((a > 1) ? 1 : a);
-    /*eslint-enable*/
-
-    // Scrunch the green/cyan range in the middle
-    const sign = (a < 0.5) ? -1 : 1;
-    a = sign * Math.pow(2 * Math.abs(a - 0.5), 0.35) / 2 + 0.5;
-
-    // Linear interpolation between the cold and hot
-    const h0 = 259;
-    const h1 = 12;
-    const h = (h0) * (1 - a) + (h1) * (a);
-    return 'hsl(' + [h, '75%', '50%'] + ')';
-  }
-
-  renderSVG() {
-    const {temperature = 0, connected} = this.props;
-    const color = this.getColor(temperature);
+  render() {
+    const {color, temperature, connected} = this.props;
     return (
-      <div className="grill-svg">
+      <div className="monitor-svg">
         <svg width="257px" height="513px" viewBox="0 0 257 513" version="1.1" xmlns="http://www.w3.org/2000/svg"
              xmlnsXlink="http://www.w3.org/1999/xlink">
           <title>Smoker</title>
@@ -90,18 +70,6 @@ export default class Grill extends Component {
           </g>
         </svg>
       </div>
-    );
-  }
-
-  render() {
-    const {connected} = this.props;
-    return (
-      <Panel
-        header={connected ? 'Connected!' : 'Temeperature monitor disconnected, awaitng reconnect...'}
-        bsStyle={connected ? 'success' : 'danger'}
-      >
-        {this.renderSVG()}
-      </Panel>
     );
   }
 }

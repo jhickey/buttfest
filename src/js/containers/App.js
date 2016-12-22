@@ -4,11 +4,13 @@ import {connect} from 'react-redux';
 
 import Header from '../components/Header';
 import Grill from '../components/Grill';
+import Pig from '../components/Pig';
 import Graph from '../components/Graph';
 
 
 @connect(state => ({
   ambientTemperature: state.temperatureMonitor.temperatures.ambient,
+  internalTemperature: state.temperatureMonitor.temperatures.internal,
   connected: state.temperatureMonitor.connected,
   lastUpdate: state.temperatureMonitor.lastUpdate
 }))
@@ -16,12 +18,13 @@ export default class App extends Component {
 
   static propTypes = {
     ambientTemperature: PropTypes.number,
+    internalTemperature: PropTypes.number,
     connected: PropTypes.bool,
     lastUpdate: PropTypes.instanceOf(Date)
   };
 
   render() {
-    const {ambientTemperature, connected, lastUpdate} = this.props;
+    const {ambientTemperature, internalTemperature, connected, lastUpdate} = this.props;
     return (
       <div className="main-app-container">
         <Header/>
@@ -29,7 +32,14 @@ export default class App extends Component {
           <Row>
             <Col lg={5} md={5} sm={12}>
               <Grill
+                title="Ambient grill temperature"
                 temperature={ambientTemperature}
+                connected={connected}
+                lastUpdate={lastUpdate}
+              />
+              <Pig
+                title="Internal meat temperature"
+                temperature={internalTemperature}
                 connected={connected}
                 lastUpdate={lastUpdate}
               />
