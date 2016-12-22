@@ -8,20 +8,20 @@ import Graph from '../components/Graph';
 
 
 @connect(state => ({
-  temperature: state.temperatureMonitor.temperature,
+  ambientTemperature: state.temperatureMonitor.temperatures.ambient,
   connected: state.temperatureMonitor.connected,
   lastUpdate: state.temperatureMonitor.lastUpdate
 }))
 export default class App extends Component {
 
   static propTypes = {
-    temperature: PropTypes.number,
+    ambientTemperature: PropTypes.number,
     connected: PropTypes.bool,
     lastUpdate: PropTypes.instanceOf(Date)
   };
 
   render() {
-    const {temperature, connected, lastUpdate} = this.props;
+    const {ambientTemperature, connected, lastUpdate} = this.props;
     return (
       <div className="main-app-container">
         <Header/>
@@ -29,7 +29,7 @@ export default class App extends Component {
           <Row>
             <Col lg={5} md={5} sm={12}>
               <Grill
-                temperature={temperature}
+                temperature={ambientTemperature}
                 connected={connected}
                 lastUpdate={lastUpdate}
               />

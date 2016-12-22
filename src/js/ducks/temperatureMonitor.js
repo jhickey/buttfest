@@ -5,7 +5,10 @@ const initialState = new TemperatureMonitor();
 
 export default function reducer(state = initialState, action) {
   const handlers = {
-    [socketActionTypes.SOCKET_DATA]: action => state.setTemperature(action.payload.temperature),
+    [socketActionTypes.SOCKET_DATA]: action => {
+      const {temperature, type} = action.payload;
+      return state.setTemperature(temperature, type);
+    },
     [socketActionTypes.SOCKET_ERROR]: action => {
       return state
         .setError(action.payload)

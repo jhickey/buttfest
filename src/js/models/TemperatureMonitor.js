@@ -1,16 +1,23 @@
 import {Record} from 'immutable';
 
+const Monitors = Record({
+  ambient: null,
+  internal: null
+});
+
 const TemperatureMonitorRecord = Record({
   connected: true,
   error: null,
-  temperature: null,
+  temperatures: new Monitors(),
+  internalTemperature: null,
   lastUpdate: null
 });
 
 export default class TemperatureMonitor extends TemperatureMonitorRecord {
-  setTemperature(temperature) {
+  setTemperature(temperature, type = 'ambient') {
+    console.log('***', temperature, type);
     return this
-      .set('temperature', temperature)
+      .setIn(['temperatures', type], temperature)
       .set('lastUpdate', new Date());
   }
 
