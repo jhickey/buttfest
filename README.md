@@ -2,7 +2,7 @@
 
 ##Setup
 
-You'll want the backend up and running first: [buttfest](https://github.com/jhickey/buttfest-server)
+You'll want the backend up and running first: [jhickey/buttfest-server](https://github.com/jhickey/buttfest-server)
 
 
 Install dependencies:
