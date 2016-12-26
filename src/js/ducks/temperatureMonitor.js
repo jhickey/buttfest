@@ -17,11 +17,9 @@ export default function reducer(state = initialState, action) {
     },
     [socketActionTypes.SOCKET_RECONNECT]: () => state.setConnectionStatus(true),
     [socketActionTypes.SOCKET_INITIAL]: (action) => {
-      const ns = reduce(action.payload, (acc, v, k) => {
+      return reduce(action.payload, (acc, v, k) => {
         return acc.setTemperature(v, k);
       }, state);
-      console.log(ns);
-      return ns;
     }
   };
   return handlers[action.type] ? handlers[action.type](action) : state;
