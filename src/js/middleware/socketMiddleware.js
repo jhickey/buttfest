@@ -17,6 +17,13 @@ export default function socketMiddleware(eventName) {
         error: true
       });
     });
+    socket.on('initial', e => {
+      dispatch({
+        type: socketActionTypes.SOCKET_INITIAL,
+        payload: e,
+        error: true
+      });
+    });
     socket.on('reconnect', data => {
       dispatch({
         type: socketActionTypes.SOCKET_RECONNECT,

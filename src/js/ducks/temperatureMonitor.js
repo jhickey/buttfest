@@ -1,3 +1,4 @@
+import {reduce} from 'lodash';
 import {socketActionTypes} from '../constants';
 import TemperatureMonitor from '../models/TemperatureMonitor';
 
@@ -14,7 +15,14 @@ export default function reducer(state = initialState, action) {
         .setError(action.payload)
         .setConnectionStatus(false);
     },
-    [socketActionTypes.SOCKET_RECONNECT]: () => state.setConnectionStatus(true)
+    [socketActionTypes.SOCKET_RECONNECT]: () => state.setConnectionStatus(true),
+    [socketActionTypes.SOCKET_INITIAL]: (action) => {
+      const ns = reduce(action.payload, (acc, v, k) => {
+        return acc.setTemperature(v, k);
+      }, state);
+      console.log(ns);
+      return ns;
+    }
   };
   return handlers[action.type] ? handlers[action.type](action) : state;
 }
