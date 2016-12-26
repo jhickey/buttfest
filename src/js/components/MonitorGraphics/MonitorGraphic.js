@@ -11,7 +11,7 @@ export default Graphic =>  class extends Component {
   };
 
   getColor(temp) {
-    const t = -30 + (60 * temp / (350));
+    const t = -30 + (60 * temp / (250));
     // Map the temperature to a 0-1 range
     let a = (t + 30) / 60;
 

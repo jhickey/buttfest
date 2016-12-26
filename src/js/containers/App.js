@@ -3,8 +3,8 @@ import {Grid, Row, Col} from 'react-bootstrap';
 import {connect} from 'react-redux';
 
 import Header from '../components/Header';
-import Grill from '../components/Grill';
-import Pig from '../components/Pig';
+import Grill from '../components/MonitorGraphics/Grill';
+import Pig from '../components/MonitorGraphics/Pig';
 import Graph from '../components/Graph';
 
 

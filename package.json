@@ -61,6 +61,7 @@
     "react-dom": "^15.4.1",
     "react-redux": "^4.1.1",
     "recharts": "^0.19.1",
+    "redux-router": "^2.1.2",
     "redux-thunk": "^1.0.3",
     "socket.io-client": "^1.7.2"
   }
