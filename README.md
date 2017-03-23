@@ -1,6 +1,6 @@
-#Buttfest control panel
+# Buttfest control panel
 
-##Setup
+## Setup
 
 You'll want the backend up and running first: [jhickey/buttfest-server](https://github.com/jhickey/buttfest-server)
 
